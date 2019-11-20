@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sf="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             mc:Ignorable="d" x:Class="SyncFusionTest.MainPage">
+    <StackLayout Margin="10, 50, 10, 10">
+        <sf:SfListView x:Name="listView" AllowSwiping="True"
+                       SelectionMode="Single" SelectionGesture="Tap"
+                       GroupHeaderSize="20">
+            <sf:SfListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Key}" TextColor="White"
+                           BackgroundColor="DarkGray"
+                           HorizontalOptions="FillAndExpand"
+                           HorizontalTextAlignment="Center"/>
+                </DataTemplate>
+            </sf:SfListView.GroupHeaderTemplate>
+            <sf:SfListView.RightSwipeTemplate>
+                <DataTemplate x:Name="RightSwipeTemplate">
+                    <Grid>
+                        <Grid BackgroundColor="White" Grid.Column="0"
+                              HorizontalOptions="Fill"  VerticalOptions="Fill">
+                            <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                                <Image Grid.Column="0" Grid.Row="0"
+                                       BackgroundColor="Transparent"
+                                       HeightRequest="35" WidthRequest="35"
+                                       Source="logo_ta"
+                                       BindingContextChanged="indexBindingContextChanged" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </sf:SfListView.RightSwipeTemplate>
+            <sf:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="5" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding name}" Grid.Column="1"
+                                   HorizontalOptions="FillAndExpand" />
+                            <Label Text="{Binding qty}" Grid.Column="2"
+                                   HorizontalOptions="FillAndExpand" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </sf:SfListView.ItemTemplate>
+        </sf:SfListView>
+    </StackLayout>
+</ContentPage>
